@@ -1,1 +1,1 @@
-棋牌室 etcd+grpc+redis+mongodb
+棋牌室 etcd+nats+grpc+redis+mongodb

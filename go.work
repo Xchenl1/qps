@@ -1,0 +1,14 @@
+go 1.22.8
+
+toolchain go1.22.8
+
+use (
+	common
+	connector
+	core
+	framework
+	game
+	gate
+	hall
+	user
+)

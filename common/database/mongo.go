@@ -19,11 +19,11 @@ func NewMongo() *MongoManager {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	clientOptions := options.Client().ApplyURI(config.Conf.Database.MongoConf.Url)
-	//clientOptions.SetAuth(options.Credential{
-	//	Username:   config.Conf.Database.MongoConf.UserName,
-	//	Password:   config.Conf.Database.MongoConf.Password,
-	//	AuthSource: config.Conf.Database.MongoConf.UserName,
-	//})
+	clientOptions.SetAuth(options.Credential{
+		Username:   config.Conf.Database.MongoConf.UserName,
+		Password:   config.Conf.Database.MongoConf.Password,
+		AuthSource: config.Conf.Database.MongoConf.UserName,
+	})
 	clientOptions.SetMinPoolSize(uint64(config.Conf.Database.MongoConf.MinPoolSize))
 	clientOptions.SetMaxPoolSize(uint64(config.Conf.Database.MongoConf.MaxPoolSize))
 	client, err := mongo.Connect(ctx, clientOptions)

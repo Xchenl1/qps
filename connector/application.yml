@@ -5,7 +5,7 @@ log:
   level: DEBUG
 db:
   mongo:
-    url: mongodb://127.0.0.1:27017
+    url: mongodb://8.130.44.1:27017
     userName: chess
     password: 5211314
     minPoolSize: 10

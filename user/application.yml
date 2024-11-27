@@ -15,14 +15,14 @@ etcd:
     ttl: 10
 db:
   mongo:
-    url: mongodb://127.0.0.1:27017
-    userName:
-    password:
+    url: mongodb://8.130.44.1:27017
+    userName: chess
+    password: 5211314
     minPoolSize: 10
     maxPoolSize: 100
     db: chess
   redis:
-    addr: 127.0.0.1:6379
+    addr: 8.130.44.1:6379
     poolSize: 10
     minIdleConns: 1
     password:

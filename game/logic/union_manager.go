@@ -25,7 +25,7 @@ func NewUnionManager() *UnionManager {
 
 func (u *UnionManager) GetUnion(unionId int64) *Union {
 	u.Lock()
-	u.Unlock()
+	defer u.Unlock()
 	union, ok := u.unionList[unionId]
 	if ok {
 		return union

@@ -13,8 +13,8 @@ import (
 )
 
 type UnionHandler struct {
-	um          *logic.UnionManager
-	userService *service.UserService
+	um          *logic.UnionManager  //房间管理器
+	userService *service.UserService // 玩家
 }
 
 func NewUnionHandler(r *repo.Manager, um *logic.UnionManager) *UnionHandler {

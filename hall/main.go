@@ -27,6 +27,7 @@ var (
 	gameConfigDir string
 	serverId      string
 )
+var dir = "D:\\goland\\GolandProjects\\qps\\hall\\"
 
 //var configFile = flag.String("config", "application.yml", "config file")
 
@@ -44,6 +45,7 @@ func main() {
 		os.Exit(1)
 	}
 	//flag.Parse()
+	configFile = dir + configFile
 	config.InitConfig(configFile)
 	game.InitConfig(gameConfigDir)
 	// 2.启动监控

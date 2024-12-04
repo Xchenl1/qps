@@ -47,7 +47,7 @@ func main() {
 	}
 	// 配置路径
 	configFile = dir + configFile
-	fmt.Println(configFile)
+	//fmt.Println(configFile)
 	//flag.Parse()
 	config.InitConfig(configFile)
 	game.InitConfig(gameConfigDir)

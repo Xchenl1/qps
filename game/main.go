@@ -2,7 +2,9 @@ package main
 
 import (
 	"common/config"
+	"common/metrics"
 	"context"
+	"fmt"
 	"framework/game"
 	"game/app"
 	"github.com/spf13/cobra"
@@ -35,22 +37,27 @@ func init() {
 	_ = rootCmd.MarkFlagRequired("serverId")
 }
 
+var dir = "D:\\goland\\GolandProjects\\qps\\game\\"
+
 func main() {
 	// 1.加载配置
 	if err := rootCmd.Execute(); err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
+	// 配置路径
+	configFile = dir + configFile
+	fmt.Println(configFile)
 	//flag.Parse()
 	config.InitConfig(configFile)
 	game.InitConfig(gameConfigDir)
 	// 2.启动监控
-	//go func() {
-	//	err := metrics.Serve(fmt.Sprintf("0.0.0.0:%d", config.Conf.MetricPort))
-	//	if err != nil {
-	//		panic(err)
-	//	}
-	//}()
+	go func() {
+		err := metrics.Serve(fmt.Sprintf("0.0.0.0:%d", config.Conf.MetricPort))
+		if err != nil {
+			panic(err)
+		}
+	}()
 	// 3.连接nats服务 并进行订阅
 	err := app.Run(context.Background(), serverId)
 	if err != nil {
